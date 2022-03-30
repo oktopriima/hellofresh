@@ -1,0 +1,7 @@
+assets
+.idea
+vendor
+
+.env
+app-local.yaml
+dbconfig.yml
