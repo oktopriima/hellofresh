@@ -18,6 +18,9 @@ import (
 	instructionTipCreate "github.com/oktopriima/hellofresh/usecase/recipeinstructiontips/create"
 	nutritionCreate "github.com/oktopriima/hellofresh/usecase/recipenutritions/create"
 	recipeCreate "github.com/oktopriima/hellofresh/usecase/recipes/create"
+	recipeDelete "github.com/oktopriima/hellofresh/usecase/recipes/delete"
+	recipeDetail "github.com/oktopriima/hellofresh/usecase/recipes/detail"
+	recipeList "github.com/oktopriima/hellofresh/usecase/recipes/list"
 	ScheduleCreate "github.com/oktopriima/hellofresh/usecase/recipeschedules/create"
 	TagCreate "github.com/oktopriima/hellofresh/usecase/recipetags/create"
 	utensilCreate "github.com/oktopriima/hellofresh/usecase/recipeutensils/create"
@@ -77,6 +80,18 @@ func injectUsecase(container *dig.Container) *dig.Container {
 	}
 
 	if err = container.Provide(ingredientContainCreate.NewCreateRecipeIngredientContain); err != nil {
+		panic(err)
+	}
+
+	if err = container.Provide(recipeDelete.NewDeleteRecipe); err != nil {
+		panic(err)
+	}
+
+	if err = container.Provide(recipeDetail.NewDetailRecipe); err != nil {
+		panic(err)
+	}
+
+	if err = container.Provide(recipeList.NewListRecipe); err != nil {
 		panic(err)
 	}
 

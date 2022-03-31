@@ -15,7 +15,7 @@ import (
 	"github.com/jmoiron/sqlx"
 	"github.com/oktopriima/hellofresh/application/conf"
 	"github.com/oktopriima/hellofresh/application/helper"
-	"github.com/oktopriima/hellofresh/models"
+	"github.com/oktopriima/hellofresh/entity/models"
 	"github.com/oktopriima/hellofresh/usecase/images"
 	"io"
 	"mime/multipart"

@@ -11,7 +11,7 @@ package repository
 import (
 	"context"
 	"github.com/jmoiron/sqlx"
-	"github.com/oktopriima/hellofresh/models"
+	"github.com/oktopriima/hellofresh/entity/models"
 	"github.com/oktopriima/hellofresh/usecase/recipeinstructiontips"
 )
 

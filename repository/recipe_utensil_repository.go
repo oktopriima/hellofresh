@@ -11,11 +11,22 @@ package repository
 import (
 	"context"
 	"github.com/jmoiron/sqlx"
-	"github.com/oktopriima/hellofresh/models"
+	"github.com/oktopriima/hellofresh/entity/models"
 	"github.com/oktopriima/hellofresh/usecase/recipeutensils"
 )
 
 type recipeUtensilRepository struct {
+}
+
+func (r recipeUtensilRepository) QueryByRecipeID(RecipeID int64, db *sqlx.DB, ctx context.Context) ([]*models.RecipeUtensil, error) {
+	data := make([]*models.RecipeUtensil, 0)
+
+	err := db.SelectContext(ctx, &data, "SELECT * FROM hellofresh.recipe_utensils WHERE recipe_id = ? AND is_deleted = ?", RecipeID, false)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
 }
 
 func NewRecipeUtensilRepository() recipeutensils.Outport {

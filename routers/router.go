@@ -33,7 +33,11 @@ func InitRoute(router *chi.Mux,
 
 	router.Route("/recipe", func(r chi.Router) {
 		r.Use(customMiddleware.AuthenticatedMiddleware)
+
 		r.Post("/", recipe.Create)
+		r.Delete("/{recipe_id}", recipe.Delete)
+		r.Get("/{recipe_id}", recipe.Detail)
+		r.Get("/", recipe.List)
 	})
 
 	router.Route("/images", func(r chi.Router) {

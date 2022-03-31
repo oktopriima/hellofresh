@@ -14,7 +14,7 @@ import (
 	"fmt"
 	"github.com/gosimple/slug"
 	"github.com/jmoiron/sqlx"
-	"github.com/oktopriima/hellofresh/models"
+	"github.com/oktopriima/hellofresh/entity/models"
 	createAllergen "github.com/oktopriima/hellofresh/usecase/recipeallergens/create"
 	createAttribute "github.com/oktopriima/hellofresh/usecase/recipeattributes/create"
 	createIngredient "github.com/oktopriima/hellofresh/usecase/recipeingredients/create"

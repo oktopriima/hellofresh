@@ -15,7 +15,7 @@ import (
 	"fmt"
 	"github.com/jmoiron/sqlx"
 	"github.com/oktopriima/hellofresh/application/helper"
-	"github.com/oktopriima/hellofresh/models"
+	models2 "github.com/oktopriima/hellofresh/entity/models"
 	"github.com/oktopriima/hellofresh/usecase/sociallogin"
 	"github.com/oktopriima/hellofresh/usecase/users"
 )
@@ -54,8 +54,8 @@ func (u userLogin) Execute(request InportRequest, ctx context.Context) (interfac
 func (u userLogin) googleLogin(request InportRequest, ctx context.Context) (interface{}, error) {
 	var (
 		err              error
-		userModel        = new(models.User)
-		socialLoginModel = new(models.SocialLogin)
+		userModel        = new(models2.User)
+		socialLoginModel = new(models2.SocialLogin)
 	)
 
 	googleData, err := u.google.GetGoogleData(request.SocialToken)
@@ -84,7 +84,7 @@ func (u userLogin) googleLogin(request InportRequest, ctx context.Context) (inte
 			return nil, err
 		}
 
-		userModel, err = u.user.Create(&models.User{
+		userModel, err = u.user.Create(&models2.User{
 			Email:     googleData.Emails[0].Value,
 			FirstName: googleData.Name.GivenName,
 			LastName:  googleData.Name.FamilyName,
@@ -97,7 +97,7 @@ func (u userLogin) googleLogin(request InportRequest, ctx context.Context) (inte
 		}
 
 		// insert social login
-		socialLoginModel = new(models.SocialLogin)
+		socialLoginModel = new(models2.SocialLogin)
 		socialLoginModel.UserID = userModel.ID
 		socialLoginModel.AccountID = googleData.ID
 		socialLoginModel.AccountType = "google"

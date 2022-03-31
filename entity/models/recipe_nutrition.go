@@ -12,12 +12,12 @@ import "time"
 
 type RecipeNutrition struct {
 	ID         int64     `json:"id" db:"id"`
-	RecipeID   int64     `json:"recipe_id" db:"recipe_id"`
+	RecipeID   int64     `json:"-" db:"recipe_id"`
 	Name       string    `json:"name" db:"name"`
 	PerServing float64   `json:"per_serving" db:"per_serving"`
 	Per100g    float64   `json:"per_100g" db:"per_100g"`
 	Unit       string    `json:"unit" db:"unit"`
-	IsDeleted  bool      `json:"is_deleted" db:"is_deleted"`
-	CreatedAt  time.Time `json:"created_at" db:"created_at"`
-	UpdatedAt  time.Time `json:"updated_at" db:"updated_at"`
+	IsDeleted  bool      `json:"-" db:"is_deleted"`
+	CreatedAt  time.Time `json:"-" db:"created_at"`
+	UpdatedAt  time.Time `json:"-" db:"updated_at"`
 }

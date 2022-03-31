@@ -11,11 +11,22 @@ package repository
 import (
 	"context"
 	"github.com/jmoiron/sqlx"
-	"github.com/oktopriima/hellofresh/models"
+	"github.com/oktopriima/hellofresh/entity/models"
 	"github.com/oktopriima/hellofresh/usecase/recipetags"
 )
 
 type recipeTagRepository struct {
+}
+
+func (r recipeTagRepository) QueryByRecipeID(RecipeID int64, db *sqlx.DB, ctx context.Context) ([]*models.RecipeTag, error) {
+	data := make([]*models.RecipeTag, 0)
+
+	err := db.SelectContext(ctx, &data, "SELECT * FROM hellofresh.recipe_tags WHERE recipe_id = ? AND is_deleted = ?", RecipeID, false)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
 }
 
 func (r recipeTagRepository) CreateMany(tags []*models.RecipeTag, tx *sqlx.Tx, ctx context.Context) error {

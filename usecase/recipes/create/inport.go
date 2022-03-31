@@ -11,7 +11,7 @@ package create
 import (
 	"context"
 	"github.com/jmoiron/sqlx"
-	"github.com/oktopriima/hellofresh/models"
+	"github.com/oktopriima/hellofresh/entity/models"
 )
 
 type Request struct {

@@ -16,6 +16,6 @@ type Image struct {
 	Mime      string    `json:"mime" db:"mime"`
 	FileName  string    `json:"file_name" db:"file_name"`
 	IsDeleted bool      `json:"is_deleted" db:"is_deleted"`
-	CreatedAt time.Time `json:"created_at" db:"created_at"`
-	UpdatedAt time.Time `json:"updated_at" db:"updated_at"`
+	CreatedAt time.Time `json:"-" db:"created_at"`
+	UpdatedAt time.Time `json:"-" db:"updated_at"`
 }

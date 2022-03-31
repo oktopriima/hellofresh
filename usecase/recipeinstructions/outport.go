@@ -11,9 +11,10 @@ package recipeinstructions
 import (
 	"context"
 	"github.com/jmoiron/sqlx"
-	"github.com/oktopriima/hellofresh/models"
+	"github.com/oktopriima/hellofresh/entity/models"
 )
 
 type Outport interface {
 	Create(instruction *models.RecipeInstruction, tx *sqlx.Tx, ctx context.Context) (*models.RecipeInstruction, error)
+	QueryByRecipeID(RecipeID int64, db *sqlx.DB, ctx context.Context) ([]*models.RecipeInstruction, error)
 }
