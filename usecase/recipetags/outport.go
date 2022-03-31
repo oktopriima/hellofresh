@@ -2,11 +2,11 @@
  * Name : Okto Prima Jaya
  * GitHub : https://github.com/oktopriima
  * Email : octoprima93@gmail.com
- * Created At : 29/03/22, 10:23
+ * Created At : 30/03/22, 16:02
  * Copyright (c) 2022
  */
 
-package recipes
+package recipetags
 
 import (
 	"context"
@@ -15,5 +15,5 @@ import (
 )
 
 type Outport interface {
-	Create(recipe *models.Recipe, tx *sqlx.Tx, ctx context.Context) (*models.Recipe, error)
+	CreateMany(tags []*models.RecipeTag, tx *sqlx.Tx, ctx context.Context) error
 }

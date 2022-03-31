@@ -9,6 +9,7 @@
 package controllers
 
 import (
+	"encoding/json"
 	"github.com/oktopriima/hellofresh/application/responses"
 	"github.com/oktopriima/hellofresh/usecase/recipes/create"
 	"net/http"
@@ -27,7 +28,10 @@ func (rc RecipeController) Create(w http.ResponseWriter, r *http.Request) {
 		req create.Request
 	)
 
-	req.Name = r.FormValue("name")
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		responses.Failed(err, http.StatusBadRequest, w)
+		return
+	}
 
 	resp, err := rc.create.Execute(req, r.Context())
 	if err != nil {

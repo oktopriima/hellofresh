@@ -27,15 +27,15 @@ func injectConfig(container *dig.Container) *dig.Container {
 		panic(err)
 	}
 
+	if err = container.Provide(conf.NewMysqlConn); err != nil {
+		panic(err)
+	}
+
 	if err = container.Provide(server.NewInstance); err != nil {
 		panic(err)
 	}
 
 	if err = container.Provide(helper.NewGoogleAuth); err != nil {
-		panic(err)
-	}
-
-	if err = container.Provide(conf.NewMysqlConn); err != nil {
 		panic(err)
 	}
 
