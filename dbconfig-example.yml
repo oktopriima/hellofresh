@@ -1,0 +1,5 @@
+local:
+  dialect: mysql
+  datasource: username:password@tcp(localhost:3306)/hellofresh?parseTime=true
+  dir: database/migrations/
+  table: migrations

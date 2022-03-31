@@ -1,0 +1,24 @@
+name: 'hellofresh'
+
+assets:
+  default_path: 'assets'
+
+jwt:
+  key: "token-key"
+  issuer: "applications"
+  duration: "10080"
+  refresh_duration: "43200"
+
+server:
+  host: '127.0.0.1'
+  port: '8080'
+
+mysql:
+  host: '127.0.0.1'
+  port: '3306'
+  username: 'homestead'
+  password: 'homestead'
+  database: 'hellofresh'
+
+google_auth:
+  url: 'https://www.googleapis.com/plus/v1/people/me'
